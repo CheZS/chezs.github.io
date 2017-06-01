@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="sFlow是一种以交换机端口为基本单元的数据流随机采样的流量监控工具">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="CheZS">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="sFlow入门"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="sFlow是一种以交换机端口为基本单元的数据流随机采样的流量监控工具" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="CheZS Blog"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+        <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>sFlow入门 - CheZS Blog</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    
+
+
+    <!-- favicon -->
+    
+	
+</head>
+
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">CheZS Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/archives">
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags">
+                            
+                                Tags
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories">
+                            
+                                Categories
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/CheZS/chezs.github.io">
+                            
+                                <i class="fa fa-github fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('http://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>sFlow入门</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2015-11-03
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/SDN/">#SDN</a> <a href="/tags/sFlow/">#sFlow</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                        
+
+<a href="/categories/SDN/">SDN</a>
+
+                    
+                </div>
+            
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <p>本文是参考了Milestone[1]，Liushy[2]，SDNLAB[3]，Mahout[4]以及sFlow-rt.com[5]整理的一份实验报告。</p>
+<h2 id="1-sFlow简介"><a href="#1-sFlow简介" class="headerlink" title="1.sFlow简介"></a>1.sFlow简介</h2><p>sFlow是一种以交换机端口为基本单元的数据流随机采样的流量监控工具。</p>
+<p>sFlow分为Agent和Collecter两部分。<br>Agent作为客户端，一般内嵌于网络转发设备（如交换机、路由器），通过获取本设备上的接口统计信息和数据信息，将信息封装成sFlow报文。<br>当sFlow报文缓冲区满或是在sFlow报文缓存时间（缓存时间为1秒）超时后，Agent会将sFlow报文发送到指定的Collector。<br>Collector作为远端服务器，负责对sFlow报文分析、汇总、生成流量报告。<br>OpenvSwitch支持sFlow，给我的实验带来了很大的方便。</p>
+<p>sFlow可以对包进行较低比率的采样（典型情况：1000个包中采样1个），并只把包的头部封装为sFlow报文传给Collecter[4]。<br>因此资源的负载会比较低，并可以适应超大网络流量(如大于10Gbit/s)环境下的流量分析。</p>
+<h2 id="2-sFlow安装与配置"><a href="#2-sFlow安装与配置" class="headerlink" title="2.sFlow安装与配置"></a>2.sFlow安装与配置</h2><p>sFlow官方推荐的sFlow软件有sFlow-trend，sFlow-rt等，我选择了sFlow-rt。版本2.0-r1031。</p>
+<p>1.安装jdk依赖</p>
+<p>2.<a href="http://www.inmon.com/products/sFlow-RT.php" target="_blank" rel="external">下载官方压缩包</a></p>
+<p>3.解压并启动sFlow Collecter</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ tar -zxvf sflow-rt.tar.gz</div><div class="line">$ <span class="built_in">cd</span> sflow/</div><div class="line">$ ./start.sh</div></pre></td></tr></table></figure>
+<p>此时sFlow Collecter已经运行起来了。</p>
+<h2 id="3-sFlow示例"><a href="#3-sFlow示例" class="headerlink" title="3.sFlow示例"></a>3.sFlow示例</h2><h3 id="3-1-环境"><a href="#3-1-环境" class="headerlink" title="3.1.环境"></a>3.1.环境</h3><table>
+<thead>
+<tr>
+<th>设备</th>
+<th>IP</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>eth0</td>
+<td>192.168.11.6</td>
+<td>连接外网网卡，也是Collecter</td>
+</tr>
+<tr>
+<td>eth1</td>
+<td>10.0.0.3</td>
+<td>用于加入OVS生成网桥的网卡</td>
+</tr>
+<tr>
+<td>h1</td>
+<td>10.0.0.1</td>
+<td>host1网卡</td>
+</tr>
+<tr>
+<td>h2</td>
+<td>10.0.0.2</td>
+<td>host2网卡</td>
+</tr>
+</tbody>
+</table>
+<h3 id="3-2-配置"><a href="#3-2-配置" class="headerlink" title="3.2.配置"></a>3.2.配置</h3><h4 id="3-2-1-启动mininet"><a href="#3-2-1-启动mininet" class="headerlink" title="3.2.1.启动mininet"></a>3.2.1.启动mininet</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo mn</div></pre></td></tr></table></figure>
+<p>或者用Floodlight当控制器</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo mn --controller=remote,ip=192.168.11.6,port=6653 --switch ovsk,protocols=OpenFlow13</div></pre></td></tr></table></figure>
+<h4 id="3-2-2-配置OVS网桥"><a href="#3-2-2-配置OVS网桥" class="headerlink" title="3.2.2.配置OVS网桥"></a>3.2.2.配置OVS网桥</h4><p>为了通过本地网卡8008端口获取mininet中的数据，需要让eth1加入到OVS生成的网桥，进而mininet中创建的OVS和服务器本地网卡相连。</p>
+<p><strong> 此处注意：将连接外网的eth0加入网桥后就不能上网了。 </strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo ovs-vsctl add-port s1 eth1</div></pre></td></tr></table></figure>
+<p>配置s1的IP，使OVS可以作为Agent和Collecter通信。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo ifconfig eth1 10.0.0.3 netmask 255.255.255.0</div></pre></td></tr></table></figure>
+<h4 id="3-2-3-开启OVS的sFlow功能"><a href="#3-2-3-开启OVS的sFlow功能" class="headerlink" title="3.2.3.开启OVS的sFlow功能"></a>3.2.3.开启OVS的sFlow功能</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo ovs-vsctl -- --id=@sflow_id create sFlow agent=s1 target=\<span class="string">"192.168.11.6:6343\" header=128 sampling=64 polling=1 -- set bridge s1 sflow=@sflow_id</span></div></pre></td></tr></table></figure>
+<p>参数说明：</p>
+<p>agent参数值为Agent的网卡(s1)，target参数值为Collecter的IP:port[6343]。</p>
+<p>header为允许拷贝的最大字节数(128)，sampling为采样频率(64个包中采样1个)，polling为sFlow报文缓冲时间(1s)。</p>
+<p>bridge为开启sFlow的网桥。</p>
+<h4 id="3-2-4-查看配置是否生效"><a href="#3-2-4-查看配置是否生效" class="headerlink" title="3.2.4.查看配置是否生效"></a>3.2.4.查看配置是否生效</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo ovs-vsctl list sflow</div></pre></td></tr></table></figure>
+<p><img src="/images/20151103/OVSList.jpg" alt="OVS配置sFlow"></p>
+<h3 id="3-3-效果"><a href="#3-3-效果" class="headerlink" title="3.3.效果"></a>3.3.效果</h3><p>打开<a href="http://192.168.11.6:8008" target="_blank" rel="external">http://192.168.11.6:8008</a> ，可以查看对应的信息。可以通过mininet的命令产生流量。</p>
+<p>例如，h1泛洪模式ping h2</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mininet&gt; h1 ping -f h2</div></pre></td></tr></table></figure>
+<p><img src="/images/20151103/sFlow.jpg" alt="sFlow-RT GUI"></p>
+<h2 id="4-API"><a href="#4-API" class="headerlink" title="4.API"></a>4.API</h2><p>sFlow支持RESTful API。常见的形式如同：</p>
+<h3 id="4-1-定义地址组address-groups"><a href="#4-1-定义地址组address-groups" class="headerlink" title="4.1.定义地址组address groups"></a>4.1.定义地址组address groups</h3><p>地址组用来分类不同的流量(traffic)。这里定义了external和internal两种地址组。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ curl -H <span class="string">"Content-Type:application/json"</span> -X PUT --data <span class="string">"&#123;external:['0.0.0.0/0']&#125;"</span> http://localhost:8008/group/external/json</div><div class="line">$ curl -H <span class="string">"Content-Type:application/json"</span> -X PUT --data <span class="string">"&#123;internal:['10.0.0.0/8']&#125;"</span> http://localhost:8008/group/internal/json</div></pre></td></tr></table></figure>
+<h3 id="4-2-定义流flow"><a href="#4-2-定义流flow" class="headerlink" title="4.2.定义流flow"></a>4.2.定义流flow</h3><p>通过包的属性(keys)来定义流。流根据属性把不同的包分组，通过value确定单位(bytes, frames, requests, duration)，通过filter选择特定的traffic。最后URL中的incoming为flow的Name。此时会一同定义名为incoming的metric。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ curl -H <span class="string">"Content-Type:application/json"</span> -X PUT --data <span class="string">"&#123;keys:'ipsource,ipdestination', value:'frames', filter:'group:ipsource:external=external&amp;group:ipdestination:internal=internal'&#125;"</span> http://localhost:8008/flow/incoming/json</div></pre></td></tr></table></figure>
+<p><strong>注意，filter中的external和internal要一致。</strong></p>
+<h3 id="4-3-定义阈值threshold"><a href="#4-3-定义阈值threshold" class="headerlink" title="4.3.定义阈值threshold"></a>4.3.定义阈值threshold</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ curl -H <span class="string">"Content-Type:application/json"</span> -X PUT --data <span class="string">"&#123;metric:'incoming', value:1000&#125;"</span> http://localhost:8008/threshold/incoming/json</div></pre></td></tr></table></figure>
+<h3 id="4-4-接收阈值事件event"><a href="#4-4-接收阈值事件event" class="headerlink" title="4.4.接收阈值事件event"></a>4.4.接收阈值事件event</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ curl <span class="string">"http://localhost:8008/events/json?eventID=4&amp;timeout=60"</span></div></pre></td></tr></table></figure>
+<h3 id="4-5-监测流"><a href="#4-5-监测流" class="headerlink" title="4.5.监测流"></a>4.5.监测流</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ curl <span class="string">"http://localhost:8008/metric/192.168.11.6/4.incoming/json"</span></div></pre></td></tr></table></figure>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>1.<a href="http://www.muzixing.com/pages/2014/11/21/sflowru-men-chu-she.html" target="_blank" rel="external">Milestone</a></p>
+<p>2.<a href="http://liushy.com/2015/01/27/sflow-ddos/" target="_blank" rel="external">Liushy</a></p>
+<p>3.<a href="http://www.sdnlab.com/3760.html" target="_blank" rel="external">SDNLAB</a></p>
+<p>4.<a href="http://shiftleft.com/mirrors/www.hpl.hp.com/personal/Praveen_Yalagandula/papers/INFOCOM11.pdf" target="_blank" rel="external">Mahout: Low-overhead datacenter traffic management using end-host-based elephant detection</a></p>
+<p>5.<a href="http://sflow-rt.com/reference.php" target="_blank" rel="external">sFlow API</a></p>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/CheZS/chezs.github.io" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">&copy; 2017 CheZS<br></p>
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

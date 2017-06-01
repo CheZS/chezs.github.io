@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="PyNLPIR allows you to easily segment Chinese text using NLPIR, one of the most widely-regarded Chinese text analyzers.">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="CheZS">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="NLPIR Python"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="PyNLPIR allows you to easily segment Chinese text using NLPIR, one of the most widely-regarded Chinese text analyzers." />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="CheZS Blog"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+        <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>NLPIR Python - CheZS Blog</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    
+
+
+    <!-- favicon -->
+    
+	
+</head>
+
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">CheZS Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/archives">
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags">
+                            
+                                Tags
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories">
+                            
+                                Categories
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/CheZS/chezs.github.io">
+                            
+                                <i class="fa fa-github fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('http://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>NLPIR Python</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2015-03-22
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/natural-language/">#natural language</a> <a href="/tags/python/">#python</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                        
+
+<a href="/categories/Natural-Language-Processing/">Natural Language Processing</a>
+
+                    
+                </div>
+            
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <h2 id="NLPIR"><a href="#NLPIR" class="headerlink" title="NLPIR"></a>NLPIR</h2><p><a href="http://www.nlpir.org/" target="_blank" rel="external">NLPIR</a>，原名ICTCLAS，是北京理工大学<a href="http://www.weibo.com/drkevinzhang" target="_blank" rel="external">张华平</a>博士发布的自然语言处理与信息检索共享平台，是目前最广为人知的中文文本分析软件。</p>
+<h2 id="1-利用PyNLPIR处理中文文本"><a href="#1-利用PyNLPIR处理中文文本" class="headerlink" title="1.利用PyNLPIR处理中文文本"></a>1.利用PyNLPIR处理中文文本</h2><p>PyNLPIR是NLPIR/ICTCLAS中文分词软件的Python封装版。利用PyNLPIR可以简单地使用NLPIR对中文文本进行分词。</p>
+<p><a href="http://pynlpir.readthedocs.org/en/latest/installation.html" target="_blank" rel="external">官方文档</a></p>
+<h3 id="1-1-用pip安装PyNLPIR"><a href="#1-1-用pip安装PyNLPIR" class="headerlink" title="1.1.用pip安装PyNLPIR"></a>1.1.用pip安装PyNLPIR</h3><p>PyNLPIR可以运行在Python 2.7或3中。由于它包括NLPIR库文件，所以它只能运行在Windows或Linux操作系统中。</p>
+<p>PyNLPIR可以通过三种方式安装：1.Pip，2.源文件，3.开发者版本。我这里采用最简单的pip进行安装。</p>
+<p><code>$ pip install pynlpir</code></p>
+<p>这行代码会从Python Package Index下载PyNLPIR，并安装在Python的site-packages目录。</p>
+<h3 id="1-2-Tutorial"><a href="#1-2-Tutorial" class="headerlink" title="1.2.Tutorial"></a>1.2.Tutorial</h3><p>有2种方式使用PyNLPIR：1.直接使用PyNLPIR提供的ctypes接口，2.使用PyNLPIR的helper functions。ctypes接口使用范围更广，而helper functions更加易用，但并不包括全部的NLPIR功能。我这里采用比较简单的helper functions。</p>
+<h4 id="1-2-1-PyNLPIR-Helper-Functions"><a href="#1-2-1-PyNLPIR-Helper-Functions" class="headerlink" title="1.2.1.PyNLPIR Helper Functions"></a>1.2.1.PyNLPIR Helper Functions</h4><p>helper functions存放在PyNLPIR的<strong>init</strong>.py文件中，所以我们直接导入pynlpir就可以使用了。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> pynlpir</div></pre></td></tr></table></figure>
+<p>导入pynlpir后，需要调用open()让NLPIR打开data files并初始化API。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pynlpir.open()</div></pre></td></tr></table></figure>
+<p>默认情况，输入时unicode或UTF-8，如果想用别的编码方式（如GBK、BIG5），需要用encoding关键词。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pynlpir.open(encoding=<span class="string">'big5'</span>)</div></pre></td></tr></table></figure>
+<p>初始化后我们就可以进行分词和文本分析了。首先进行分词。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">s = <span class="string">"NLPIR分词系统前身为2000年发布的ICTCLAS词法分析系统，从2009年开始，为了和以前工作进行大的区隔，并推广NLPIR自然语言处理与信息检索共享平台，调整命名为NLPIR分词系统。"</span></div><div class="line">pynlpir.segment(s)</div><div class="line"></div><div class="line"><span class="comment"># Sample output: [('NLPIR', 'noun'), ('分词', 'verb'), ('系统', 'noun'), ('前身', 'noun'), ('为', 'preposition'), ('2000年', 'time word'), ('发布', 'verb'), . . . ]</span></div></pre></td></tr></table></figure>
+<p>同时我们可以提取关键词。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">pynlpir.get_key_words(s, weighted=<span class="keyword">True</span>)</div><div class="line"></div><div class="line"><span class="comment"># Sample output: [('NLPIR', 2.08), ('系统', 1.74)]</span></div></pre></td></tr></table></figure>
+<p>当我们操作完毕后，可以关闭API。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pynlpir.close()</div></pre></td></tr></table></figure>
+<h4 id="1-2-2-Windows-cmd"><a href="#1-2-2-Windows-cmd" class="headerlink" title="1.2.2.Windows cmd"></a>1.2.2.Windows cmd</h4><p>一切看起来都那么美好，然而问题来了。我在Win7 cmd中运行的结果看起来是这样的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[(u&apos;NLPIR&apos;, u&apos;noun&apos;), (u&apos;\u5206\u8bcd&apos;, u&apos;verb&apos;), (u&apos;\u7cfb\u7edf&apos;, u&apos;noun&apos;)...]</div></pre></td></tr></table></figure>
+<p>这是由于python在输出的时候解码方式错误导致的。</p>
+<p>这可以通过python的decode函数明确解码方法为，unicode-escape，来解决。</p>
+<p>但是pynlpir.segment()输出的类型是list，没有decode函数，于是我们要先把它转换为str类型。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Segmenting Text</span></div><div class="line">s = <span class="string">"NLPIR分词系统前身为2000年发布的ICTCLAS词法分析系统，从2009年开始，为了和以前工作进行大的区隔，并推广NLPIR自然语言处理与信息检索共享平台，调整命名为NLPIR分词系统。"</span></div><div class="line">out = str(pynlpir.segment(s)).decode(<span class="string">"unicode-escape"</span>)</div><div class="line"><span class="keyword">print</span> out</div></pre></td></tr></table></figure>
+<p>Done.</p>
+<h2 id="2-关键词与交叉熵"><a href="#2-关键词与交叉熵" class="headerlink" title="2.关键词与交叉熵"></a>2.关键词与交叉熵</h2><p>NLPIR的关键词提取据说是基于期望交叉熵(Cross Entropy)实现的。</p>
+<p>交叉熵是信息论中的概念，它是一种万能的Monte-Carlo技术，常用于稀有事件的仿真建模、多峰函数的最优化问题。交叉熵技术已用于解决经典的旅行商问题、背包问题、最短路问题、最大割问题等。例如，<a href="http://eprints.eemcs.utwente.nl/7716/01/fulltext.pdf" target="_blank" rel="external">A Tutorial on the Cross-Entropy Method</a>。</p>
+<p>交叉熵算法的推导过程中又牵扯出来一个问题：如何求一个数学期望？常用的方法有这么几种：</p>
+<ul>
+<li>概率方法，比如Crude Monte-Carlo</li>
+<li>测度变换法change of measure</li>
+<li>偏微分方程的变量代换法</li>
+<li>Green函数法</li>
+<li>Fourier变换法</li>
+</ul>
+<p>在实际中变量X服从的概率分布h往往是不知道的，人们会用g来近似地代替h（这本质上是一种函数估计）。有一种度量g和h相近程度的方法叫 Kullback-Leibler距离，又叫交叉熵。</p>
+<p>$$D(g,h)=E<em>g log \frac{g(X)}{h(X)} = \frac{1}{N} \sum</em>{i=1}^{N} g(x_i) log \frac{g(x_i)}{h(x_i)}$$</p>
+<p>通常选取g和h具有相同的概率分布类型（比如已知h是指数分布，那么就选g也是指数分布）—-参数估计，只是pdf参数不一样（实际上h中的参数根本就是未知的）。</p>
+<h3 id="2-1-基于期望交叉熵的特征项选择"><a href="#2-1-基于期望交叉熵的特征项选择" class="headerlink" title="2.1.基于期望交叉熵的特征项选择"></a>2.1.<a href="http://www.cnblogs.com/zhangchaoyang/articles/2655785.html" target="_blank" rel="external">基于期望交叉熵的特征项选择</a></h3><p>$$CE(\omega)=\sum_{i} p(c_i|\omega) log \frac{p(c_i|\omega)}{p(c_i)}$$</p>
+<p>交叉熵反应了文本类别的概率分布与在出现了某个词条的情况下文本类别的概率分布之间的距离。词条的交叉熵越大，对文本类别分布影响也就越大。所以选CE最大的K个词条作为最终的特征项。</p>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/CheZS/chezs.github.io" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">&copy; 2017 CheZS<br></p>
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="sFlow event handler介绍与使用">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="CheZS">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="sFlow event handler"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="sFlow event handler介绍与使用" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="CheZS Blog"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+        <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>sFlow event handler - CheZS Blog</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    
+
+
+    <!-- favicon -->
+    
+	
+</head>
+
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">CheZS Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/archives">
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags">
+                            
+                                Tags
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories">
+                            
+                                Categories
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/CheZS/chezs.github.io">
+                            
+                                <i class="fa fa-github fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('http://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>sFlow event handler</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2015-12-21
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/SDN/">#SDN</a> <a href="/tags/sFlow/">#sFlow</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                        
+
+<a href="/categories/SDN/">SDN</a>
+
+                    
+                </div>
+            
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <p>本文参考了blog.sflow.com上的两篇文章[1, 2]，由于没有找到介绍event handler的中文材料，只能自己整理了。</p>
+<h2 id="1-起因"><a href="#1-起因" class="headerlink" title="1.起因"></a>1.起因</h2><p>在看到文献[3]之后，我对代码实现中的while很不爽。同时，仅会使用sFlow的API往往也不能满足需求。</p>
+<p>在最近的学习中，发现了sFlow中的event handler，它可以通过js被用户定制，并能在event发生时执行。</p>
+<h2 id="2-通过js定制sFlow"><a href="#2-通过js定制sFlow" class="headerlink" title="2.通过js定制sFlow"></a>2.通过js定制sFlow</h2><p>根据sflow-rt/lib/js.jar，我们可以看出sFlow是通过Rhino完成java与js的互操作。</p>
+<p>正如文献[1, 2]中所示，可以通过js定义sFlow的流（flow）、阈值（Threshold）、以及event handler。</p>
+<p>例如，下面代码定义了tcp这个flow，elephant这个threshold。</p>
+<p>当tcp流量超过elephant阈值时，执行event handler中的代码，获取flow的信息，并post到一个服务器中：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Define large flow as greater than 1Mbits/sec for 1 second or longer</span></div><div class="line"><span class="keyword">var</span> bytes_per_second = <span class="number">1000000</span>/<span class="number">8</span>;</div><div class="line"><span class="keyword">var</span> duration_seconds = <span class="number">1</span>;</div><div class="line"></div><div class="line">setFlow(<span class="string">'tcp'</span>,</div><div class="line">    &#123;<span class="attr">keys</span>:<span class="string">'ipsource,ipdestination,tcpsourceport,tcpdestinationport'</span>,</div><div class="line">    <span class="attr">value</span>:<span class="string">'bytes'</span>, <span class="attr">t</span>:duration_seconds&#125;</div><div class="line">);</div><div class="line"></div><div class="line">setThreshold(<span class="string">'elephant'</span>,</div><div class="line">    &#123;<span class="attr">metric</span>:<span class="string">'tcp'</span>, <span class="attr">value</span>:bytes_per_second, <span class="attr">byFlow</span>:<span class="literal">true</span>, <span class="attr">timeout</span>:<span class="number">2</span>&#125;</div><div class="line">);</div><div class="line"></div><div class="line">setEventHandler(<span class="function"><span class="keyword">function</span>(<span class="params">evt</span>) </span>&#123;</div><div class="line">    <span class="comment">// Get flow informations</span></div><div class="line">    <span class="keyword">var</span> agent = evt.agent;</div><div class="line">    logInfo(agent);         <span class="comment">// not necessary</span></div><div class="line"></div><div class="line">    <span class="comment">// Sent POST request</span></div><div class="line">    <span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);</div><div class="line">    <span class="keyword">var</span> options = &#123;         <span class="comment">// use your server</span></div><div class="line">        host: <span class="string">'127.0.0.1'</span>,</div><div class="line">        <span class="attr">path</span>: <span class="string">'/EventLogic'</span>,</div><div class="line">        <span class="attr">port</span>: <span class="string">'8080'</span>,</div><div class="line">        <span class="attr">method</span>: <span class="string">'POST'</span></div><div class="line">    &#125;;</div><div class="line">    callback = <span class="function"><span class="keyword">function</span>(<span class="params">response</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> str = <span class="string">''</span>;</div><div class="line">        response.on(<span class="string">'data'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">chunk</span>) </span>&#123;</div><div class="line">            str += chunk;</div><div class="line">        &#125;);</div><div class="line">        response.on(<span class="string">'end'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            logInfo(str);</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">var</span> req = http.request(options, callback);</div><div class="line">    req.write(agent);</div><div class="line">    req.end();</div><div class="line">&#125;,[<span class="string">'elephant'</span>]);</div></pre></td></tr></table></figure>
+<p>接着就是修改sFlow的start.sh来加载自定义的js脚本。我的js脚本位于path/to/sFlow/extras/test.js。</p>
+<p>主要修改SCRIPTS参数。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/bin/sh</span></div><div class="line"></div><div class="line">HOME=`dirname <span class="variable">$0</span>`</div><div class="line"><span class="built_in">cd</span> <span class="variable">$HOME</span></div><div class="line"></div><div class="line">JAR=<span class="string">"./lib/sflowrt.jar"</span></div><div class="line">JVM_OPTS=<span class="string">"-Xincgc -Xmx200m"</span></div><div class="line"><span class="comment">#RT_OPTS="-Dsflow.port=6343 -Dhttp.port=8008"</span></div><div class="line"><span class="comment">#SCRIPTS="-Dscript.file=init.js"</span></div><div class="line">RT_OPTS=<span class="string">"-Dopenflow.controller.start=yes -Dopenflow.controller.flushRules=no"</span></div><div class="line">SCRIPTS=<span class="string">"-Dscript.file=./extras/test.js"</span></div><div class="line"></div><div class="line"><span class="built_in">exec</span> java <span class="variable">$&#123;JVM_OPTS&#125;</span> <span class="variable">$&#123;RT_OPTS&#125;</span> <span class="variable">$&#123;SCRIPTS&#125;</span> -jar <span class="variable">$&#123;JAR&#125;</span></div></pre></td></tr></table></figure>
+<p>由于我不太会js，还参考了文献[4]。</p>
+<h2 id="3-使用Redis"><a href="#3-使用Redis" class="headerlink" title="3.使用Redis"></a>3.使用Redis</h2><p>我们还可以将Redis与sFlow一同使用。</p>
+<p>利用Redis实现网络状态的缓存，并通过event handler实现网络状态变化的推送。</p>
+<p>由于sFlow通过Rhino解析js，直接调用Redis比较困难，我们可以采用Webdis[5]。</p>
+<p>然而我并未对这种方案的性能进行测试，还是实验阶段。</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>1.<a href="http://blog.sflow.com/2014/04/mininet-integrated-hybrid-openflow.html" target="_blank" rel="external">Mininet integrated hybrid OpenFlow testbed</a></p>
+<p>2.<a href="http://blog.sflow.com/2014/03/performance-optimizing-hybrid-openflow.html" target="_blank" rel="external">Performance optimizing hybrid OpenFlow controller</a></p>
+<p>3.<a href="http://blog.sflow.com/2013/01/performance-aware-software-defined.html" target="_blank" rel="external">Performance aware software defined networking</a></p>
+<p>4.<a href="http://javascript.ruanyifeng.com/nodejs/http.html" target="_blank" rel="external">Http模块</a></p>
+<p>5.<a href="https://github.com/nicolasff/webdis" target="_blank" rel="external">Webdis</a></p>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/CheZS/chezs.github.io" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">&copy; 2017 CheZS<br></p>
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>
