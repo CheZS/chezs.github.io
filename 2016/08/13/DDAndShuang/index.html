@@ -67,13 +67,16 @@
     <!-- Gallery -->
     <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
 
+    <!-- zoom-vanilla -->
+    <link href="http://ofsstj8tb.bkt.clouddn.com/lib/zoom.css" rel="stylesheet">
+
     <!-- Google Analytics -->
     
 
 
     <!-- favicon -->
     
-	
+
 </head>
 
 
@@ -271,6 +274,17 @@
 
 <!-- Gallery -->
 <script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- zoom-vanilla -->
+<script src="http://ofsstj8tb.bkt.clouddn.com/lib/zoom-vanilla.min.js"></script>
+<script type="text/javascript">
+    var imgs = document.getElementsByTagName('img');
+    Array.prototype.forEach.call(imgs, addDataActionToImg);
+
+    function addDataActionToImg(img) {
+      img.setAttribute('data-action', 'zoom');
+    }
+</script>
 
 <!-- Disqus Comments -->
 
